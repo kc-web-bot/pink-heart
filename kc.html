@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY BEBEE</title>
+    <style>
+        body {
+            background-color: #FFFFE0; /* Light pale yellow */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            color: red;
+            font-size: 48px;
+            z-index: 1;
+        }
+        .heart {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            background: #FFC0CB; /* Pale pink */
+            transform: rotate(-45deg);
+            animation: fly 4s ease-in infinite;
+        }
+        .heart::before, .heart::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #FFC0CB; /* Pale pink */
+            position: absolute;
+        }
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+        .heart::after {
+            left: 10px;
+            top: 0;
+        }
+        @keyframes fly {
+            0% {
+                transform: rotate(-45deg) translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(-45deg) translate(100px, -200px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>MY BEBEE</h1>
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.animationDuration = `${Math.random() * 2 + 3}s`;
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
